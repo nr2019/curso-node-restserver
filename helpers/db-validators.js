@@ -28,9 +28,9 @@ const existeUsuarioPorId =  async( id ) =>{
       // return res.status(400).json({
       //     msdg: 'El correo ya existe en BD'
       // });
-      throw new Error(`El id ${ id } no existe en la BD`)
+      throw new Error(`El id ${ id } no existe en la BD.`)
   }
-}
+} 
   module.exports = {
       esRoleValido,
       emailExiste,

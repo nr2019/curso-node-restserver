@@ -12,7 +12,7 @@ const UsuarioSchema = Schema({
     },
     password: {
         type: String,
-        required: [true, 'La password es obligatoria']
+        required: [true, 'La password es obligatoria.']
     },
     img: {
         type: String,
@@ -37,6 +37,6 @@ UsuarioSchema.methods.toJSON = function() {
     const { __v, password, ...usuario } = this.toObject();
     return usuario;
 }
-
+ 
 
 module.exports = model( 'Usuario', UsuarioSchema );

@@ -11,7 +11,7 @@ class Server {
         // Conectar a DB
         this.conectarDB();
 
-
+ 
         // Middlewares
         this.middlewares();
 
@@ -44,7 +44,7 @@ class Server {
 
     listen() { 
         this.app.listen(this.port, ()=> {
-            console.log('Servidor corriendo en puerto: ', this.port);
+            console.log('Servidor corriendo en el puerto: ', this.port);
         });
     }
 }

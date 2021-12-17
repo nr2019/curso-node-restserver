@@ -9,7 +9,7 @@ const usuariosGet = async(req, res = response) => {
     // En el request recibo un parámetro que se llama LIMITE. desestructuro el request
     // y obtengo el valor necesarios. si no viene nada, pongo 5 como default
     // OJO! El parámetro llega como string y limit espera un número, hay que castearlo
-    const { limite = 5, desde = 0 } = req.query;
+    const { limite = 6, desde = 0 } = req.query;
     const query =  { estado:true } ;
 
     // Se ejecutan las 2 consultas secuencialmente. cuando termina una, arranca la otra
@@ -97,7 +97,7 @@ const usuariosPut = async(req, res = response) => {
 
     res.status(400).json(usuario);
 };
-
+ 
 
 const usuariosPatch = (req, res) => {
     // res.status(403).json({

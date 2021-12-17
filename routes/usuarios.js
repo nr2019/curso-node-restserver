@@ -21,14 +21,14 @@ const router = Router();
   router.post('/',[
                   check('nombre','El nombre es obligatório').not().isEmpty(),
                   check('password','El password debe posee más de 6 caracteres').isLength({min: 6}),
-                  check('correo','El correo no es válido').isEmail(),
+                  check('correo','El correo no es válido.').isEmail(),
                   check('correo').custom( emailExiste ),
                   //check('rol','El rol no es válido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
                   check('rol').custom( esRoleValido ), 
                   validarCampos
                 ], 
               usuariosPost);
-
+ 
   
   router.patch('/', usuariosPatch);
   router.delete('/:id',[
