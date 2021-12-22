@@ -115,9 +115,26 @@ const usuariosDelete = async(req, res = response) => {
     // // Borrado físico
     // const usuario = await Usuario.findByIdAndDelete( id );
 
-    const usuario = await Usuario.findByIdAndUpdate( id, {estado: false });
 
-    res.json(usuario);
+    // const uid = req.uid;
+
+    // obtener usuario autenticado
+    const usuLogueado = req.usuario;
+    if (!usuLogueado) {
+        console.log('seis');
+        res.status(401).json({
+            msg: 'Usuario no autenticado'
+        });
+    }
+
+    const usuario = await Usuario.findByIdAndUpdate( id, {estado: false });
+    
+    // se imprime el usuario autenticado
+    res.json({
+        usuario,
+         usuLogueado
+        // uid
+    });
 };
 
 module.exports = {

@@ -1,9 +1,9 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { usuariosGet, usuariosDelete, usuariosPut, usuariosPost, usuariosPatch } = require('../controllers/usuarios');
+const {validarCampos, validarJWT, esAdminRole, tieneRole} = require('../middlewares');
 const { esRoleValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-validators');
-const { validarCampos } = require('../middlewares/validar-campos');
-// const {} = require('../helpers/db-validators');
+
 
 const router = Router();
 
@@ -32,6 +32,10 @@ const router = Router();
   
   router.patch('/', usuariosPatch);
   router.delete('/:id',[
+    
+    validarJWT,
+    // esAdminRole,
+    tieneRole('ADMIN_ROLE', 'VENTAS_ROLE'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ), // Esta validación está en helpers y me asegura que el ID excista
     // check('rol').custom( esRoleValido ),// al validarlo acá, me obliga a que lo manen en la modificación

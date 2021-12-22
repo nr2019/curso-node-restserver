@@ -32,9 +32,21 @@ const UsuarioSchema = Schema({
     },
 });
 
+// UsuarioSchema.methods.toJSON = function() {
+//     // Extrae __v y password. el resto de los parámetros los pone en usuario
+//     const { __v, password, ...usuario } = this.toObject();
+//     return usuario;
+// }
+
 UsuarioSchema.methods.toJSON = function() {
     // Extrae __v y password. el resto de los parámetros los pone en usuario
-    const { __v, password, ...usuario } = this.toObject();
+    const { __v, password,_id, ...usuario } = this.toObject();
+    // let uid = _id;
+    // return {
+    //     usuario,
+    //     uid
+    // };
+    usuario.uid = _id;
     return usuario;
 }
  
